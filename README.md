@@ -1,32 +1,79 @@
-# Composition vs Inheritance
+# Composition vs. Inheritance
 
 ## Learning Goals
 
-- Learning Goal 1
-- Learning Goal 2
+- Explain the difference between composition and inheritance
 
 ## Introduction
 
-A 1-2 sentence summary of what will be covered.
+Composition and inheritance represent two types of relationships
+between classes. Composition and inheritance both promote code reuse,
+but in different ways.
 
-## Topic 1
+## When to use Composition and Inheritance
 
-Discuss the topic of the reading. Break into sections and sub-sections as
-appropriate to help with the reader's orientation with the material and future
-referencing.
+**Composition** is when a class has references to other classes as members.
+We can think of composition as having a "has-a" relationship:
 
-## Topic 2
+- A library has a book.
+- A house has a kitchen.
+- A car has a steering wheel
 
-Discuss the topic of the reading. Break into sections and sub-sections as
-appropriate to help with the reader's orientation with the material and future
-referencing.
+Consider the following example:
 
-## Conclusion
+```java
+public class SteeringWheel {
+    private double radius;
+    private boolean heated;
+    ...
+}
 
-A short one or two paragraph summary of the contents of the lessons, recapping
-the learning goals.
+public class Engine {
+    private String type;
+    private int cylinders;
+    ...
+}
 
-## Resources
+public class Car {
+    private SteeringWheel steeringWheel;
+    private Engine engine;
+    ...
+}
+```
 
-- [Resource Link 1](example.com)
-- [Resource Link 2](example.com)
+This is a very simplified example, but it shows that we know a car has as
+parts a steering wheel, an engine, etc. So we can represent this in code
+by defining the `Car` class as having fields to reference 
+`SteeringWheel` and `Engine` objects.
+
+Composition differs from inheritance since inheritance is
+associated with an "is-a" relationship:
+
+- A cat is an animal.
+- Football is a sport.
+- A car is a vehicle.
+
+```java
+public class Sport {
+    ...
+}
+
+public class Football extends Sport {
+    ...
+}
+```
+
+We've seen with polymorphism that inheritance promotes substitutability.
+Since `Football` inherits from `Sport`, a `Football` object can be used
+anywhere a `Sport` object is expected since football "is-a" sport.
+
+When deciding on whether to use composition or inheritance, it is important to
+remember the "is-a" versus "has-a" relationships as they serve different
+purposes.
+
+Why don't we just have `Car` inherit from `SteeringWheel` rather than using composition?
+Because a car is not a type of steering wheel, a car "has-a" steering wheel as a part.
+
+Why don't we just have `Football` use composition to contain a `Sport` object?  Because
+football "is-a" type of sport, and we can use an instance of `Football` anywhere
+a `Sport` object is needed.
