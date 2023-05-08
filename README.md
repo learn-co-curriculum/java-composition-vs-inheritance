@@ -41,10 +41,11 @@ public class Car {
 }
 ```
 
-This is a very simplified example, but it shows that we know a car has as
-parts a steering wheel, an engine, etc. So we can represent this in code
-by defining the `Car` class as having fields to reference 
-`SteeringWheel` and `Engine` objects.
+This is a very simplified example, but it shows that we know
+a car has a steering wheel, an engine, and possibly other parts.
+We can represent this in code
+by defining a `Car` class to have fields referencing a
+`SteeringWheel` and an `Engine` object.
 
 Composition differs from inheritance since inheritance is
 associated with an "is-a" relationship:
